@@ -1,0 +1,13 @@
+$website-width: 1280px;
+.container {
+  max-width: $website-width;
+  padding: 0 1.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+@media (max-width: 500px) {
+  .container {
+    overflow: auto;
+  }
+}

@@ -1,0 +1,44 @@
+#filter {
+  .text-fields {
+    display: grid;
+    grid-template-areas:
+      "name title"
+      "field date";
+    grid-gap: 1.2rem;
+    margin-bottom: 1.2rem;
+
+    // Grid Areas
+    .name-input {
+      grid-area: name;
+    }
+    .title-input {
+      grid-area: title;
+    }
+    .field-input {
+      grid-area: field;
+    }
+    .date-input {
+      grid-area: date;
+    }
+
+    .text-input {
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+// Tablets & Smaller
+@media (max-width: 800px) {
+}
+// Smartphones
+@media (max-width: 500px) {
+  #filter {
+    .text-fields {
+      grid-template-areas:
+        "name"
+        "title"
+        "field"
+        "date";
+    }
+  }
+}
