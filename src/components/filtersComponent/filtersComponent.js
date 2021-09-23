@@ -15,19 +15,19 @@ const FiltersComponent = ({ filterDatas }) => {
   //   }
   // };
   const filter = (e, key) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const searchQuery = e.target.value;
-      history.push({
-        // pathname: '/',
-        search: "?filter",
-        state: { ...history.location.state, [key]: searchQuery },
-      });
-      console.log(history);
+    // if (e.key === "Enter") {
+    e.preventDefault();
+    const searchQuery = e.target.value;
+    history.push({
+      // pathname: '/',
+      search: "?filter",
+      state: { ...history.location.state, [key]: searchQuery },
+    });
+    console.log(history);
 
-      filterDatas(key);
-      // e.target.value = "";
-    }
+    filterDatas(key);
+    // e.target.value = "";
+    // }
   };
 
   return (
@@ -35,40 +35,53 @@ const FiltersComponent = ({ filterDatas }) => {
       <p className="lead">You can enter filter</p>
       <div className="text-fields">
         <input
-          // value={
-          //   history.location.state && history.location.state.name
-          //     ? history.location?.state.name
-          //     : null
-          // }
+          value={
+            history.location.state && history.location.state.name
+              ? history.location?.state.name
+              : ""
+          }
           className="text-input name-input"
-          onKeyDown={(e) => filter(e, "name")}
-          // onInput={(e) => filter(e, "name")}
+          // onKeyDown={(e) => filter(e, "name")}
+          onChange={(e) => filter(e, "name")}
           type="text"
           placeholder="Name"
           name="name"
         />
         <input
+          value={
+            history.location.state && history.location.state.title
+              ? history.location?.state.title
+              : ""
+          }
           className="text-input title-input"
-          onKeyDown={(e) => filter(e, "title")}
+          // onKeyDown={(e) => filter(e, "title")}
+          onChange={(e) => filter(e, "title")}
           type="text"
           placeholder={headTitle.title}
           name="title"
         />
         <input
-          // value={
-          //   history.location.state && history.location.state.field
-          //     ? history.location?.state.field
-          //     : ""
-          // }
+          value={
+            history.location.state && history.location.state.field
+              ? history.location?.state.field
+              : ""
+          }
           className="text-input field-input"
-          onKeyDown={(e) => filter(e, "field")}
+          // onKeyDown={(e) => filter(e, "field")}
+          onChange={(e) => filter(e, "field")}
           type="text"
           placeholder={headTitle.field}
           name="field"
         />
         <input
+          value={
+            history.location.state && history.location.state.date
+              ? history.location?.state.date
+              : ""
+          }
           className="text-input date-input"
-          onKeyDown={(e) => filter(e, "date")}
+          // onKeyDown={(e) => filter(e, "date")}
+          onChange={(e) => filter(e, "date")}
           type="date"
           placeholder="date"
           name="date"

@@ -40,7 +40,6 @@ class TablePage extends Component {
   }
 
   filterDatas = (key) => {
-    const { filterTypes } = this.state;
     const { history } = this.props;
     const { search, state } = history.location;
 
@@ -53,17 +52,16 @@ class TablePage extends Component {
       this.setState({
         data: state.date
           ? this.binarySearchTree(state.date)
-          : this.state.data
-              // this.setStarData()
-              .filter((item) => {
-                for (let key in state) {
-                  if (key === "name") {
-                    if (!item[key].toLowerCase().includes(state[key]))
-                      return false;
-                  } else if (!item[key].includes(state[key])) return false;
-                }
-                return true;
-              }),
+          : // this.state.data
+            this.setStarData().filter((item) => {
+              for (let key in state) {
+                if (key === "name") {
+                  if (!item[key].toLowerCase().includes(state[key]))
+                    return false;
+                } else if (!item[key].includes(state[key])) return false;
+              }
+              return true;
+            }),
       });
 
       // const key = search.slice(search.search("/?") + 1, search.search("="));
